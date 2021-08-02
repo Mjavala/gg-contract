@@ -2,8 +2,8 @@ const { expect } = require("chai");
 
 const deploy = async (name, owner) => {
   const Contract = await ethers.getContractFactory(name);
-  return await upgrades.deployProxy(Contract).then(f => f.deployed())
-}
+  return await upgrades.deployProxy(Contract).then((f) => f.deployed());
+};
 
 describe("Rays", function () {
   it("Instantiated and ownership transferred", async function () {
