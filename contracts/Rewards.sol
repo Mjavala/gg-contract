@@ -1,12 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
 
-import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable {
+abstract contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable {
+    function allowance(address owner, address spender) virtual external view override returns (uint256);
+    function approve(address spender, uint256 amount) virtual external override returns (bool);
+    function balanceOf(address account) virtual external view override returns (uint256);
+    function totalSupply() virtual external view override returns (uint256);
+    function transfer(address recipient, uint256 amount) virtual external override returns (bool);
     //IERC20Upgradeable public token;
     /**
         Contract deployment and projected end time used to calculate available daily rewards
@@ -71,13 +76,13 @@ contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, Pausab
             -   GG token amount in contract
             -   End time
      */
-    function calculateDailyRewards(uint amount, uint endTime) external returns (uint){
+    function calculateDailyRewards(uint amount, uint end) external returns (uint){
 
     }
     /**
         Streamer functions
      */
-    function addStreamer (address streamer, string username) external {
+    function addStreamer (address streamer, string calldata username) external {
 
     }
 
@@ -85,14 +90,14 @@ contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, Pausab
 
     }
 
-    function setStreamerUsername (string newUsername) external {
+    function setStreamerUsername (string calldata newUsername) external {
 
     }
 
     /**
         TempStreamer functions
      */
-    function addTempStreamer (address streamer, string username, uint startTime, uint endTime) external {
+    function addTempStreamer (address streamer, string calldata username, uint start, uint end) external {
 
     }
 
@@ -100,24 +105,24 @@ contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, Pausab
 
     }
 
-    function setTempStreamerUsername (string newUsername) external {
+    function setTempStreamerUsername (string calldata newUsername) external {
 
     }
 
     /**
         Temporary streamers are not tracked indefinitely. On expiration, they are removed from the rewards service.
      */
-    function removeTempStreamer (address tempStreamer, string userName) internal {
+    function removeTempStreamer (address tStreamer, string calldata user) internal {
 
     }
 
-    function checkStreamerExpiry(uint startTime, uint endTime) {
+    function checkStreamerExpiry(uint start, uint end) internal {
 
     }
     /**
         User functions
      */
-    function addUser (address user, string username) external {
+    function addUser (address user, string calldata username) external {
 
     }
 
@@ -125,9 +130,7 @@ contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, Pausab
 
     }
 
-    function setUserUsername (string newUsername) external {
+    function setUserUsername (string calldata newUsername) external {
 
     }
-
-
 }
