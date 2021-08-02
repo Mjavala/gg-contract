@@ -34,8 +34,8 @@ contract Rewards is Initializable, OwnableUpgradeable, PausableUpgradeable {
     }
 
     // need to initialize with GG token address
-    function initializeinitialize() public initializer {
-
+    function initialize() public initializer {
+        __Ownable_init();
     }
     function pause() public onlyOwner {
         _pause();
