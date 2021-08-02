@@ -2,16 +2,10 @@
 pragma solidity ^0.8.2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-abstract contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable {
-    function allowance(address owner, address spender) virtual external view override returns (uint256);
-    function approve(address spender, uint256 amount) virtual external override returns (bool);
-    function balanceOf(address account) virtual external view override returns (uint256);
-    function totalSupply() virtual external view override returns (uint256);
-    function transfer(address recipient, uint256 amount) virtual external override returns (bool);
+contract Rewards is Initializable, OwnableUpgradeable, PausableUpgradeable {
     //IERC20Upgradeable public token;
     /**
         Contract deployment and projected end time used to calculate available daily rewards
