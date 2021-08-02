@@ -1,11 +1,12 @@
-pragma 0.8.2;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.2;
 
 import "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 
-contract GG is Initializable, IERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable {
+contract Rewards is Initializable, IERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable {
     //IERC20Upgradeable public token;
     /**
         Contract deployment and projected end time used to calculate available daily rewards
